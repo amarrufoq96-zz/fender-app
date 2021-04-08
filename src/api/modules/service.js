@@ -22,4 +22,12 @@ service.createFavorite = params => axios.post(`${apiUrl}/user/createFavorite`, p
   .then(response => response.data)
   .catch(error => error);
 
+service.getUserProfile = id => axios.get(`${apiUrl}/user/userInformation/${id}`)
+  .then(response => response.data.data)
+  .catch(error => error.response.data);
+
+service.updateUserInformation = params => axios.post(`${apiUrl}/user/editUser`, params)
+  .then(response => response.data)
+  .catch(error => error.response);
+
 module.exports = service

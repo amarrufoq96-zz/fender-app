@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, useLocation  } from 'react-router-dom';
-import { Main } from 'layouts';
-import { Login, CreateUser, Home } from 'views';
+import { BrowserRouter, Route  } from 'react-router-dom';
+import { Login, CreateUser, Home, Profile } from 'views';
 import { MenuBar } from 'common/components';
 
 const Routes = () => {
@@ -23,6 +22,11 @@ const Routes = () => {
                     exact
                     path="/home"
                     component={Home}
+                />
+                    <Route
+                    exact
+                    path="/profile"
+                    component={Profile}
                 />
         </BrowserRouter>
     </>
