@@ -45,7 +45,7 @@ class CreateUser extends Component {
       <Row style={{ textAlign: 'center'}} justify="center" gutter={[8, 8]}>
         <Col span={8} />
         <Col style={{ textAlign: 'center'}} span={8}>
-          <Card style={{ width: 400 }}>
+          <Card style={{ width: '100%' }}>
             <Title level={3}>Create a new user</Title>
             <CreateUserForm
                 handlerCreateUser={this.handlerCreateUser}

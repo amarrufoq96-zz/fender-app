@@ -5,16 +5,10 @@ import { Login, CreateUser, Home } from 'views';
 import { MenuBar } from 'common/components';
 
 const Routes = () => {
-    console.log(window.location.pathname, '<---window.location.pathname');
     return (
     <>
-        {
-            window.location.pathname !== '/'
-            ? <MenuBar />
-            : null
-        }
         <BrowserRouter>
-            <Switch>
+            <Route component={MenuBar} />
                 <Route
                     exact
                     path="/"
@@ -30,7 +24,6 @@ const Routes = () => {
                     path="/home"
                     component={Home}
                 />
-            </Switch>
         </BrowserRouter>
     </>
     );

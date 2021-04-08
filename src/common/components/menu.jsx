@@ -15,33 +15,43 @@ class MenuBar extends React.Component {
   } 
 
   handleClick = e => {
+    const { history } = this.props;
     this.setState({ current: e.key });
     if (e.key === '1') {
-      window.location.href = '/home'
+      history.push('/home')
     }
     if (e.key === '2') {
-      window.location.href = '/profile'
+      history.push('/profile')
     }
     if (e.key === '3') {
       localStorage.removeItem('token');
-      window.location.href = '/'
+      history.push('/')
     }
   };
 
   render() {
     const { current } = this.state;
+    const path = window.location.pathname
     return (
+      <>
+      { 
+      path === '/' || path === '/create' ?
+        null
+      : 
       <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
-        <Menu.Item key="1" icon={<SmileOutlined />}>
-          Rick and Morty
-        </Menu.Item>
-        <Menu.Item key="2" icon={<ProfileOutlined />}>
-          My Information
-        </Menu.Item>
-        <Menu.Item key="3" icon={<LogoutOutlined />}>
-            Log Out
-        </Menu.Item>
-      </Menu>
+          <Menu.Item key="1" icon={<SmileOutlined />}>
+            Rick and Morty
+          </Menu.Item>
+          <Menu.Item key="2" icon={<ProfileOutlined />}>
+            My Information
+          </Menu.Item>
+          <Menu.Item key="3" icon={<LogoutOutlined />}>
+              Log Out
+          </Menu.Item>
+        </Menu>
+    }
+      </>
+
     );
   }
 }
