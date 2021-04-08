@@ -6,7 +6,7 @@ require('es6-promise').polyfill()
 
 const service = {}
 
-service.getIndentifierData = params => axios.post(`${apiUrl}/customers/identifier`, params)
+service.postLogin = params => axios.post(`${apiUrl}/user/login`, params)
   .then(response => response.data)
   .catch(error => error);
 

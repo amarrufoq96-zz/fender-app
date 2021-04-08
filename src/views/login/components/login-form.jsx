@@ -4,7 +4,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const LoginForm = props => {
-  const { onFinish } = props;
+  const { onFinish, handlerCreateUser } = props;
   return (
     <>
    <Form
@@ -48,7 +48,7 @@ const LoginForm = props => {
         </Button>
         <br />
         <br />
-        Or <a href="">register user now!</a>
+        Or <a onClick={handlerCreateUser}>create user now!</a>
       </Form.Item>
     </Form>
     </>

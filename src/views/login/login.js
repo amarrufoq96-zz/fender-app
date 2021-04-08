@@ -6,22 +6,33 @@ import LoginForm from './components/login-form';
 import logo from '../../common/Images/logo.png'
 import api from 'api';
 
+
 class Home extends Component {
   constructor (props) {
     super(props)
   }
 
-  componentDidMount () {
-  
-  }
-
   onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    console.log(values, '<---values');
+    api.service.postLogin(values)
+    .then(result => this.handlePostLogin(result));
   };
 
+  handlePostLogin = data => {
+    const { history } = this.props;
+    if (data.success === 200) {
+      history.push('/home');
+    } else {
+      window.alert("User or password incorrect");
+    }
+  }
+
+  handlerCreateUser = () => {
+    const { history } = this.props;
+    history.push('/create');
+  }
 
   render () {
-    const { history } = this.props;
     return (
     <>
       <Row justify="center" gutter={[8, 8]}>
@@ -37,7 +48,10 @@ class Home extends Component {
         <Col span={8} />
         <Col style={{ textAlign: 'center'}} span={8}>
           <Card style={{ width: 400 }}>
-            <LoginForm onFinish={this.onFinish} />
+            <LoginForm
+              handlerCreateUser={this.handlerCreateUser}
+              onFinish={this.onFinish}
+            />
           </Card>
         </Col>
         <Col span={8} />

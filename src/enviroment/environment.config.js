@@ -1,15 +1,5 @@
-/**
- * @name Environment
- * @description Configuración de entornos para conexión de Talentry (Test, Onstage, Beta y Production)
- * @author César Rivera
- */
-
 const LOCAL = 'http://localhost:8080';
 const TEST_DOMAIN = 'https://d164tcwcvb5pog.cloudfront.net';
-// const ONSTAGE_DOMAIN = 'https://app1.compusolucionesenlinea.com';
-// const BETA_DOMAIN = 'https://app1.compusolucionesenlinea.com';
-// const PRODUCTION_DOMAIN = 'https://app2.compusolucionesenlinea.com';
-
 
 let environments = [
     // TEST
