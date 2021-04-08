@@ -1,15 +1,13 @@
-// const axios = require('axios')
-const configuration = require('../configuration')
-
-const apiUrl = process.env.NODE_ENV === 'production' ? configuration.production : configuration.development
-
+const axios = require('axios')
+const { Environment } = require('../../enviroment')
+const apiUrl = `${Environment.getCurrent().endpoints.mailbox}`;
+console.log(apiUrl, '<-----apiUrl')
 require('es6-promise').polyfill()
 
 const service = {}
 
-// service.getInvoices = () => axios.get('https://clongram-api-j2hwstk1d.now.sh/categories')
-//   .then(response => response.data)
-//   .catch(error => error)
-
+service.getIndentifierData = params => axios.post(`${apiUrl}/customers/identifier`, params)
+  .then(response => response.data)
+  .catch(error => error);
 
 module.exports = service

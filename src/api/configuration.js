@@ -1,5 +1,5 @@
 module.exports = {
-  production: 'https://d1vhyc970ypeab.cloudfront.net',
-  stage: 'https://d1vhyc970ypeab.cloudfront.net',
-  development: 'http://localhost:8080'
+  production: 'https://d164tcwcvb5pog.cloudfront.net',
+  stage: 'https://d164tcwcvb5pog.cloudfront.net',
+  development: 'https://localhost:3000'
 }
