@@ -15,6 +15,7 @@ class CreateUser extends Component {
 
   onFinish = async (values) => {
     const body = values['user'];
+    console.log(body, '<----body');
     const service = await api.service.postCreateUser(body);
     this.handlePostCreate(service);
   };

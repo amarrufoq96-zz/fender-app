@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route  } from 'react-router-dom';
-import { Login, CreateUser, Home, Profile } from 'views';
+import { Login, CreateUser, Home, Profile, UsersList } from 'views';
 import { MenuBar } from 'common/components';
 
 const Routes = () => {
@@ -27,6 +27,11 @@ const Routes = () => {
                     exact
                     path="/profile"
                     component={Profile}
+                />
+                <Route
+                    exact
+                    path="/users"
+                    component={UsersList}
                 />
         </BrowserRouter>
     </>

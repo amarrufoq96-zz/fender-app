@@ -9,10 +9,9 @@ service.postLogin = params => axios.post(`${apiUrl}/user/login`, params)
   .then(response => response.data)
   .catch(error => error);
 
-  service.postCreateUser = params => axios.post(`${apiUrl}/user/login`, params)
+service.postCreateUser = params => axios.post(`${apiUrl}/user/createUser`, params)
   .then(response => response.data)
   .catch(error => error);
-
 
 service.getCharacters = () => axios.get('https://rickandmortyapi.com/api/character')
   .then(response => response.data.results)
@@ -30,4 +29,7 @@ service.updateUserInformation = params => axios.post(`${apiUrl}/user/editUser`, 
   .then(response => response.data)
   .catch(error => error.response);
 
+service.getUsersList = () => axios.get(`${apiUrl}/user/usersList`)
+  .then(response => response.data)
+  .catch(error => error.response);
 module.exports = service
