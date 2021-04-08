@@ -13,17 +13,17 @@ class CreateUser extends Component {
     super(props)
   }
 
-  onFinish = (values) => {
-    api.service.postCreateUser(values['user'])
-    .then(result => console.log(result, '<--RESULT'));
+  onFinish = async (values) => {
+    const body = values['user'];
+    const service = await api.service.postCreateUser(body);
+    this.handlePostCreate(service);
   };
 
   handlePostCreate = data => {
     const { history } = this.props;
-    console.log('<-----ciiickkkk');
     if (data) {
       message.success('User created!');
-      history.push('/home');
+      history.push('/');
     } else {
       window.alert("There was an error in the petition");
     }

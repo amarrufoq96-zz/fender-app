@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Form, Input, InputNumber, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 const layout = {
   labelCol: {
@@ -32,6 +33,7 @@ const CreateUserForm = props => {
         label="Name"
         rules={[
           {
+            min: 3,
             max: 100,
             required: true,
           },
@@ -44,6 +46,7 @@ const CreateUserForm = props => {
         label="Username"
         rules={[
           {
+            min: 3,
             max: 10,
             required: true,
           },
@@ -56,12 +59,15 @@ const CreateUserForm = props => {
         label="Password"
         rules={[
           {
+            min: 3,
             max: 10,
             required: true,
           },
         ]}
       >
-        <Input />
+        <Input.Password
+      placeholder="input password"
+      iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
         <Button type="primary" htmlType="submit">

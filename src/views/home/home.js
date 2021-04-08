@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, notification } from 'antd'
+import { Col, Row, notification, Spin } from 'antd'
 import 'antd/dist/antd.css'
 import CardsCharacter from './components/characters-cards';
-import logo from '../../common/Images/logo.png'
+import Home1 from '../../common/Images/home1.png'
 import api from 'api';
 
 const openNotificationWithIcon = type => {
@@ -20,6 +20,7 @@ class Home extends Component {
     this.state = {
       charactersList: [],
       favDisplay: true,
+      visibleSpin: true,
     };
   }
 
@@ -29,24 +30,30 @@ class Home extends Component {
   }
 
   handleCharacters = data => {
-    this.setState({ charactersList: data });
+    this.setState({ charactersList: data, visibleSpin: false });
   }
 
   handleAddFav = id => {
+    this.setState({ visibleSpin: true});
     const idCharacter = id;
     const body = { id: 5, idCharacter };
     api.service.createFavorite(body)
     .then(result => {
       if(result.status === 200) {
         openNotificationWithIcon('success')
+        this.setState({ visibleSpin: false });
       }
     });
   }
 
   render () {
-    const { charactersList, favDisplay } = this.state;
+    const { charactersList, favDisplay, visibleSpin } = this.state;
     return (
     <>
+    <Spin spinning={visibleSpin} tip="Adding...">
+    <div style={{ textAlign: 'center', width: '100%' }}>
+      <img src={Home1} alt='logo' style={{ width: '30%'}} />
+    </div>
       <Row>
         <Col sm={1} md={4} lg={6} />
         <Col sm={10} md={8} lg={12}>
@@ -58,6 +65,7 @@ class Home extends Component {
         </Col>
         <Col sm={1} md={4} lg={6}/>
       </Row>
+    </Spin>
     </>
     )
   }
