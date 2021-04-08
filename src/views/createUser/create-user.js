@@ -13,6 +13,12 @@ class CreateUser extends Component {
     super(props)
   }
 
+  componentDidMount () {
+    const { history } = this.props;
+    const token = localStorage.getItem('token');
+    if (!token) { history.push('./') }
+  }
+
   onFinish = async (values) => {
     const body = values['user'];
     console.log(body, '<----body');

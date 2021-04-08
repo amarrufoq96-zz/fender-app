@@ -20,6 +20,9 @@ class UsersList extends Component {
   }
 
   componentDidMount() {
+    const { history } = this.props;
+    const token = localStorage.getItem('token');
+    if (!token) { history.push('./') }
     api.service.getUsersList().then(result=> this.handleUsers(result));
   }
 

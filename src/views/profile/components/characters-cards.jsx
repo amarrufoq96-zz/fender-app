@@ -12,7 +12,6 @@ const IconText = ({ icon, text }) => (
 
 const CardsCharacter = props => {
   const { charactersList, favDisplay, handleAddFav } = props;
-  console.log(charactersList, '<---charactersList');
   return (
     <>
     {/* {

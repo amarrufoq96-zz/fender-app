@@ -25,6 +25,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    const { history } = this.props;
+    const token = localStorage.getItem('token');
+    if (!token) { history.push('./') }
     api.service.getCharacters()
     .then(result => this.handleCharacters(result));
   }
