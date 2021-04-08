@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './index.css';
 import { Menu } from 'antd';
-import { ProfileOutlined, SmileOutlined, LogoutOutlined } from '@ant-design/icons';
-import { useHistory } from 'react-router-dom';
+import { UserOutlined , SmileOutlined, LogoutOutlined, OrderedListOutlined  } from '@ant-design/icons';
 
 class MenuBar extends React.Component {
   constructor(props) {
@@ -27,6 +26,9 @@ class MenuBar extends React.Component {
       localStorage.removeItem('token');
       history.push('/')
     }
+    if (e.key === '4') {
+      history.push('/users')
+    }
   };
 
   render() {
@@ -42,8 +44,11 @@ class MenuBar extends React.Component {
           <Menu.Item key="1" icon={<SmileOutlined />}>
             Rick and Morty
           </Menu.Item>
-          <Menu.Item key="2" icon={<ProfileOutlined />}>
+          <Menu.Item key="2" icon={<UserOutlined  />}>
             My Information
+          </Menu.Item>
+          <Menu.Item key="4" icon={<OrderedListOutlined  />}>
+            Users List
           </Menu.Item>
           <Menu.Item key="3" icon={<LogoutOutlined />}>
               Log Out

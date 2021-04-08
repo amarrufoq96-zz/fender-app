@@ -14,14 +14,17 @@ const CardsCharacter = props => {
   const { charactersList, favDisplay, handleAddFav } = props;
   return (
     <>
+    <br />
+    <h3>User favorite Characters:</h3>
       <List
+          style={{ marginRight: '3%' }}
           itemLayout="vertical"
           size="large"
           pagination={{
             onChange: page => {
               console.log(page);
             },
-            pageSize: 5,
+            pageSize: 3,
           }}
           dataSource={charactersList}
           renderItem={item => (

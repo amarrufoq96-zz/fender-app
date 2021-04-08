@@ -4,6 +4,7 @@ import { Col, Row, notification, Spin } from 'antd'
 import 'antd/dist/antd.css'
 import UserCard from './components/user-card';
 import EditUserModal from './components/edit-user-modal';
+import CardsCharacter from './components/characters-cards';
 import api from 'api';
 
 const openNotificationWithIcon = type => {
@@ -57,27 +58,23 @@ class Profile extends Component {
       <>
         <Spin spinning={visibleSpin} tip="loading...">
           <Row>
-            <Col sm={4} md={6} lg={8} />
-            <Col justify="center" xsm={16} md={12} lg={8}>
+            <Col justify="center"sm={24} md={12} lg={8}>
             <div style={{ marginTop: '20%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <UserCard handleEditProfile={this.handleEditProfile} userData={userData} />
+              
             </div>
+            <br />
+            {
+              formVisible ?
+              <EditUserModal 
+              onFinish={this.onFinish}/>
+              : null
+            }
             </Col>
-            <Col sm={4} md={6} lg={8} />
+            <Col sm={24} md={12} lg={16}>
+             <CardsCharacter charactersList={userData.fav}/>
+            </Col>
           </Row>
-          <br />
-          {
-            formVisible ?
-            <Row>
-              <Col sm={4} md={6} lg={8} />
-              <Col justify="center" xsm={16} md={12} lg={8}>
-                <EditUserModal 
-                  onFinish={this.onFinish}/>
-              </Col>
-              <Col sm={4} md={6} lg={8} />
-            </Row>
-            : null
-          }
         </Spin>
       </>
     );
