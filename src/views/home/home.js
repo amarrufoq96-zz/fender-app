@@ -36,7 +36,8 @@ class Home extends Component {
   handleAddFav = id => {
     this.setState({ visibleSpin: true});
     const idCharacter = id;
-    const body = { id: 5, idCharacter };
+    const idUser = localStorage.getItem('token');
+    const body = { id: idUser, idCharacter };
     api.service.createFavorite(body)
     .then(result => {
       if(result.status === 200) {

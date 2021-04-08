@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, Card } from 'antd'
+import { Col, Row, Card, notification } from 'antd'
 import jwtDecode from 'jwt-decode'
 import 'antd/dist/antd.css'
 import LoginForm from './components/login-form';
 import logo from '../../common/Images/logo.png'
 import api from 'api';
 
+const openNotificationWithIcon = type => {
+  notification[type]({
+    message: 'Error ',
+    description:
+      'User or password incorrect.',
+  });
+};
 
 class Home extends Component {
   constructor (props) {
@@ -25,7 +32,7 @@ class Home extends Component {
       localStorage.setItem('token', token.id)
       history.push('/home');
     } else {
-      window.alert("User or password incorrect");
+      openNotificationWithIcon('error')
     }
   }
 

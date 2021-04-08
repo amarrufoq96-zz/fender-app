@@ -32,6 +32,7 @@ class Profile extends Component {
   }
 
   handleProfile = data => {
+    console.log(data, '<----data');
     this.setState({ userData: data, visibleSpin: false, formVisible: false });
   }
 

@@ -13,6 +13,11 @@ class MenuBar extends React.Component {
     };
   } 
 
+  componentDidMount () {
+    const path = window.location.pathname;
+    this.setState({ current: path === '/' ? '3' : path === '/home' ? '1' : path === '/profile' ? '2' : path === '/users' ? '4' : '1' });
+  }
+
   handleClick = e => {
     const { history } = this.props;
     this.setState({ current: e.key });
