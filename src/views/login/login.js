@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, message, Layout, Card } from 'antd'
+import { Col, Row, Card } from 'antd'
+import jwtDecode from 'jwt-decode'
 import 'antd/dist/antd.css'
 import LoginForm from './components/login-form';
 import logo from '../../common/Images/logo.png'
@@ -13,7 +14,6 @@ class Home extends Component {
   }
 
   onFinish = (values) => {
-    console.log(values, '<---values');
     api.service.postLogin(values)
     .then(result => this.handlePostLogin(result));
   };
@@ -21,6 +21,8 @@ class Home extends Component {
   handlePostLogin = data => {
     const { history } = this.props;
     if (data.success === 200) {
+      const token = jwtDecode(data.token);
+      localStorage.setItem('token', token.id)
       history.push('/home');
     } else {
       window.alert("User or password incorrect");

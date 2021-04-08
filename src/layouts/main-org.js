@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // React Router
-import { Redirect } from 'react-router-dom';
+import { MenuBar } from 'common/components';
 
 class MainOrg extends Component {
   constructor(props) {
@@ -16,10 +16,11 @@ class MainOrg extends Component {
 
   render() {
     const { children } = this.props;
-    const { history } = this.props.children.props;
+    // const { history } = this.props.children.props;
 
     return (
       <>
+      <MenuBar />
         {children}
       </>
     );
