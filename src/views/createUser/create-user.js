@@ -15,8 +15,9 @@ class CreateUser extends Component {
 
   componentDidMount () {
     const { history } = this.props;
-    const token = localStorage.getItem('token');
-    if (!token) { history.push('./') }
+   // const token = localStorage.getItem('token');
+    //console.log(token, '<----token');
+    //  if (token === null) { history.push('./') }
   }
 
   onFinish = async (values) => {
